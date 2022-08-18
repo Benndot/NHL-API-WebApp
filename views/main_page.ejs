@@ -1,0 +1,38 @@
+<!-- This is the dynamic webpage that comes up when the /site page is called -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Html files that want to work with the ejs rendering engine need to take that engine's file extension name -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- the forward slash preceding the href for the css page is important. Deeper routed pages need it to locate the page, for some reason -->
+    <link rel="stylesheet" href="/main_page_style.css"/>
+    
+    <title>My First Webpage That Includes Dynamic Javascript Elements</title>
+</head>
+<body>
+
+<center>
+    <h2>Welcome to the main site page, I guess</h2>
+
+    <p class="first-paragraph">This is still under construction, it's not much but it's something. </p>
+
+    <form action="/chairs" method="POST">
+    <div class="search-bar-div">
+    <label class="search-bar">Search<input type="text" name="searchQuery" value="<%= locals.searchQuery %>" /></label>
+    </div>
+
+    <button class="sponge-button"><img class="sponge" src="/media/SpongeChair.png" alt="Display Error"></button>
+    </form>
+
+    <!-- The weird syntax below is how to get javascript running into this file from elsewhere. All except last are vars from the server.js render statement -->
+    <!-- The double bars indicate a default value to be used if the variable searched for is undefined in the javascript file. Very useful, don't forget -->
+    <p class="second-paragraph">Result of js variable multiplication is: <%= locals.number * locals.number || 2 %> <br> 
+        <%= locals.message || 'Hiiiiiiiiiiiiii there' %> <br> <%= locals.bird || 'Robin' %></p>
+</center>
+
+</body>
+</html>
