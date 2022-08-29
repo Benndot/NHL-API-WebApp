@@ -29,6 +29,10 @@ app.get('/site', (request, response, next) => {
     response.render('main_page', {number: 4, message: "My favourite bird is a: ", bird: "Seagull"});
 });
 
+app.get('/friend', (request, response, next) => {
+    response.render('friendly');
+});
+
 
 // This is where we import the routes folder and set up the server to detect the commands defined inside the users.js file
 const userRouter = require('./routes/chairs');
