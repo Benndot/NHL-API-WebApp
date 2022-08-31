@@ -1,0 +1,37 @@
+body {
+    background-color: rgb(178, 231, 178);
+}
+
+.header-div {
+    text-align: center;
+}
+
+.header-text {
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.form-section {
+    margin-top: 60px;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.input-label {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.input-box {
+    font-size: 25px;
+    height: 30px;
+    width: 210px;
+}
+
+.input-button {
+    height: 40px;
+    width: 160px;
+    margin-left: 30%;
+}

@@ -3,23 +3,36 @@ body {
 }
 
 h2 {
+    font-size: 60px;
+    font-weight: 900;
     color: rgb(7, 78, 7);
-    margin-top: 50px;
+    transition: color 1.3s;
+    text-align: center;
 }
 
-.first-paragraph {
+h2:hover {
+    color: goldenrod;
+}
+
+.header-div {
+    background-color: rgb(160, 185, 177);
+    padding-top: 30px;
+    margin-top: 0;
+    height: 220px;
+}
+
+.construction-message {
     color: blueviolet;
-    font-size: larger;
+    font-size: 35px;
+    font-weight: 500;
     font-family: Verdana;
     margin-top: 100px;
+    text-align: center;
 }
 
-.second-paragraph {
-    color: brown;
-    font-size: large;
-    font-family: 'Gill Sans';
-    position: relative;
-    margin-top: 175px;
+.search-bar-div {
+    display: flex;
+    justify-content: center;
 }
 
 .search-bar {
@@ -35,4 +48,6 @@ h2 {
 
 .sponge-button {
     margin-top: 100px;
+    margin-left: 44%;
 }
+

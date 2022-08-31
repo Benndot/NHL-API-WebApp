@@ -1,7 +1,7 @@
 // Making a basic web app to practice my skills
 // 'npm run appTracker' to track and reload the web app as we save and make changes
 
-const { urlencoded } = require('express');
+const { urlencoded, response } = require('express');
 const express = require('express');
 const app = express();
 
@@ -20,8 +20,8 @@ app.set('view engine', 'ejs');  // Setting up the viewing engine itself (install
 let port_number = 3000;
 
 app.get('/', (request, response, next) => {
-    console.log('Somebody connected...');  // This is what's logged on the developer's console
-    response.status(500).send(`Hello there, thank u for making contact on port ${port_number}`); // This is what is received by the person contacting the page
+    console.log('Somebody has connected to our server...');  // This is what's logged on the developer's console
+    response.status(500).send(`Hello there, thank you for making contact on port ${port_number}!`); // This is what is received by the person contacting the page
 
 });
 
@@ -29,16 +29,27 @@ app.get('/site', (request, response, next) => {
     response.render('main_page', {number: 4, message: "My favourite bird is a: ", bird: "Seagull"});
 });
 
-app.get('/friend', (request, response, next) => {
-    response.render('friendly');
+app.get('/chair', (request, response, next) => {
+    response.status(404).send('I think you might be looking for the /chairs page. Unless you want to only see one single chair. Which can be arranged. I will make that page.');
 });
+
+app.get('/form', (req, res, next) => {
+    res.render('user_form', {nom: 'Baggins'});
+})
+
+app.post('/', (req, res) => {
+    let nameObject = {firstName: req.body.firstName || 'Bob', lastName: req.body.lastName || 'Smith'};
+    console.log(`You've reached POST of input_submit.ejs. Data retrieved: (${nameObject.firstName}, ${nameObject.lastName})`);
+})
 
 
 // This is where we import the routes folder and set up the server to detect the commands defined inside the users.js file
 const userRouter = require('./routes/chairs');
+const userRouter2 = require('./routes/misc')
 app.use('/chairs', userRouter);
+app.use('/misc', userRouter2)
 
-// This is an example of MIDDLEWARE. Its use must be triggered elsewhere (see usage above)
+// This is an example of MIDDLEWARE. Its use must be triggered elsewhere (see usage above, on line 10)
 function logger(req, res, next) {
     console.log(req.originalUrl);
     next();
