@@ -26,16 +26,22 @@
         </p>
     </div>
 
-    <div class="interaction-section">
-        <div>
-            <input type="file">
+
+    <!--These inputs have not yet been tested-->
+    <form action="/misc" method="POST">
+        <div class="interaction-section">
+
+            <div>
+                <input class="file-picker" type="file" id="fileSelect" name="fileSelect" value="<%= locals.fileSelect %>">
+            </div>
+            <div>
+                <input type="submit" class="button-a" value="Button">
+            </div>
+            <div>
+                <input class="date-picker" type="date" id="inputDate" name="inputDate" value="<%= locals.inputDate %>">
+            </div>
         </div>
-        <div>
-            <button class="button-a" type="button">WUMBO</button>
-        </div>
-        <div>
-            <input type="date">
-        </div>
-    </div>
+    </form>
+
 </body>
 </html>

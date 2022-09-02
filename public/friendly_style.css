@@ -46,3 +46,8 @@ body {
     box-shadow: 10px;
     border-style: none;
 }
+
+.button-a:focus {
+    background-color: rgb(59, 59, 231);
+    color: chartreuse;
+}

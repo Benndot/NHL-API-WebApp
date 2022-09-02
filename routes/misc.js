@@ -16,4 +16,9 @@ router.get('/form', (req, res) => {
     res.render('user_form', {nom: 'Pierre', prenom: 'Roche'})
 })
 
+router.post('/', (req, res) => {
+    // For the inteactivity added to the bottom bar of the friendly.ejs page
+    console.log(`${req.body.fileSelect || 'No input'}, ${typeof(req.body.fileSelect)}.${req.body.inputDate || 'No input'}`)
+})
+
 module.exports = router

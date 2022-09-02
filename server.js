@@ -38,8 +38,9 @@ app.get('/form', (req, res, next) => {
 })
 
 app.post('/', (req, res) => {
-    let nameObject = {firstName: req.body.firstName || 'Bob', lastName: req.body.lastName || 'Smith'};
-    console.log(`You've reached POST of input_submit.ejs. Data retrieved: (${nameObject.firstName}, ${nameObject.lastName})`);
+    let nameObject = {firstName: req.body.firstName || 'Bob', lastName: req.body.lastName || 'Smith', userBirth: req.body.userBirth || '0/0/0'};
+    console.log(`You've reached POST of input_submit.ejs. Data retrieved: (${nameObject.firstName}, ${nameObject.lastName}, ${nameObject.userBirth})`);
+    res.render("user_form", {nom: nameObject.lastName, prenom: nameObject.firstName})
 })
 
 

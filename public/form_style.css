@@ -35,3 +35,7 @@ body {
     width: 160px;
     margin-left: 30%;
 }
+
+#date-label {
+    margin-right: 50px;
+}

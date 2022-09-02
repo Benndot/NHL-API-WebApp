@@ -9,7 +9,7 @@ router.get('/', (request, response, next) => {
 router.post('/', (req, res) => {
     let searchInput = req.body.searchQuery;
     console.log(`POST method reached, input searchQuery was "${searchInput|| 500}"`);
-    res.redirect('/chairs/catalog')  // takes the url extension, not the file extension
+    res.render('search_results', {keyWord: req.body.searchQuery})  // takes the url extension, not the file extension
 })
 
 router.get('/main', (request, response, next) => {
