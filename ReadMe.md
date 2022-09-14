@@ -23,32 +23,32 @@ There are a few hyperlinks to youtube videos stuffed here and there. Mostly just
 
 Without specifying a route, you can access the following pages from the main address:
 
-"/form" for a simple name input form [user_form.ejs]
+-"/form" for a simple name input form [user_form.ejs]
 
-"/direct" for a fake and currently incomplete directory of webpages [directory.ejs]
+-"/direct" for a fake and currently incomplete directory of webpages [directory.ejs]
 
-"/site" for a basic frontpage sort of thing? [main_page.ejs] 
+-"/site" for a basic frontpage sort of thing? [main_page.ejs] 
 
 Beyond that, there are two routes, currently: /chairs and /misc
 
-/chairs pages:
+### /chairs pages:
 
 /chairs: A basic Chair search bar page. Takes an input, which is successfully received, but nothing is done based on it yet. [main_page.ejs]
 
-"/chairs/main":
+-"/chairs/main":
 
-"/chairs/catalog": Redirects from search bar input in the chairs page. Meant to simulate a digital storefront results page. Injects a bit of random number
+-"/chairs/catalog": Redirects from search bar input in the chairs page. Meant to simulate a digital storefront results page. Injects a bit of random number
 generation into the Chair's price labels [search_results.ejs]
 
-"/chairs/catalog/:id": Lets the user input a search term, that will display on the search results page when it's rendered. [search_results.ejs]
+-"/chairs/catalog/:id": Lets the user input a search term, that will display on the search results page when it's rendered. [search_results.ejs]
 
-/misc pages:
+### /misc pages:
 
-"/misc/friendly": Just there for the sake of it. Messing around with cool CSS functionality [friendly.ejs] 
+-"/misc/friendly": Just there for the sake of it. Messing around with cool CSS functionality [friendly.ejs] 
 
-"/misc/form": Also renders out the input form page [user_form.ejs]
+-"/misc/form": Also renders out the input form page [user_form.ejs]
 
 There are 3 more interactions, but they're just simple text responses not worth saying much about. They are as listed below:
-/
-/chair
-/misc
+-"/"
+-"/chair"
+-"/misc"
