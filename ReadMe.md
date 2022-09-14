@@ -25,7 +25,7 @@ Without specifying a route, you can access the following pages from the main add
 
 -"/form" for a simple name input form [user_form.ejs]
 
--"/direct" for a fake and currently incomplete directory of webpages [directory.ejs]
+-"/direct" basically just a drop-down menu example. It's meant to be directory but is currently incomplete [directory.ejs]
 
 -"/site" for a basic frontpage sort of thing? [main_page.ejs] 
 
