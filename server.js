@@ -47,6 +47,11 @@ app.post('/', (req, res) => {
     res.render("user_form", {nom: nameObject.lastName, prenom: nameObject.firstName})
 })
 
+// This is the function to render static html in Express. Adapt it and use it for one of your own pages
+// app.get('/', function(request, response){
+//     response.sendFile('absolutePathToYour/htmlPage.html');
+// });
+
 
 // This is where we import the routes folder and set up the server to detect the commands defined inside the users.js file
 const userRouter = require('./routes/chairs');

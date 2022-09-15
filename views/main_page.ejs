@@ -11,7 +11,7 @@
     <!-- the forward slash preceding the href for the css page is important. Deeper routed pages need it to locate the page, for some reason -->
     <link rel="stylesheet" href="/main_page_style.css"/>
     
-    <title>My First Webpage That Includes Dynamic Javascript Elements</title>
+    <title>My First Webpage That Inserts Dynamic Javascript</title>
 </head>
 <body>
     
@@ -43,7 +43,7 @@
     <!-- The weird syntax below is how to get javascript running into this file from elsewhere. All except last are vars from the server.js render statement -->
     <!-- The double bars indicate a default value to be used if the variable searched for is undefined in the javascript file. Very useful, don't forget -->
     <p class="js-variables">Result of js variable multiplication is: <%= locals.number * locals.number || 2 %> <br> 
-        <%= locals.message || 'Hiiiiiiiiiiiiii there' %> <br> <%= locals.bird || 'Robin' %></p>
+        <%= locals.message || 'Hello there, visitor' %> <br> <%= locals.bird || 'Robin' %></p>
 </center>
 
 </body>
