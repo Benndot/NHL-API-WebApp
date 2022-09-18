@@ -9,7 +9,21 @@ console.log("Primary Server Online"); // Just a greeting message, can be used fo
 
 // app.use(logger); // Setting the logger function defined near the bottom of this file to run up here
 
-app.use(express.static('public'))  // Showing the javascript the path to our folder of static webpages that can be loaded/navigated to
+let staticOptions = {
+    dotfiles: "ignore", //allow, deny, ignore
+    etag: true,
+    extensions: ["htm", "html"],
+    index: false, //to disable directory indexing
+    maxAge: "7d",
+    redirect: false,
+    setHeaders: function(res, path, stat) {
+      //add this header to all static responses
+      res.set("x-timestamp", Date.now());
+    }
+  };
+
+// This allows express methods to access static resources (photos, css, html files, etc) and allows sent html files to locate their stylepage links
+app.use(express.static('public', staticOptions)) 
 
 app.use(urlencoded({ extended: true}))  // This is what we need to use body variables defined in html/ejs (see new.ejs 'firstName')
 app.use(express.json())  // Allows for the parsing of json files from the html/ejs/whatever webpage rendering engine
@@ -24,6 +38,20 @@ app.get('/', (request, response, next) => {
     response.status(500).send(`Hello there, thank you for making contact on port ${port_number}!`); // This is what is received by the person contacting the page
 
 });
+
+// This is an example of deliver a static html page using express' "sendFile" method
+app.get('/stat', (request, response) => {
+    response.sendFile("static_page.html", {root: "public/"});
+});
+
+app.get("/swirl", (req, res) => {
+    let imgLoc = __dirname + "/public/media/cotton-candy.gif" // This does register as the location of the resource
+    let imgTag = `<img src="${imgLoc}" alt="Nope"/>`;  
+    console.log(imgTag)
+    let html = `<!Doctype html><html><head><title>Sample</title></head>`;
+    html += `<body><h1>Sample HTML</h1><main>${imgTag}</main></body></html>`;
+    res.sendFile(imgLoc);
+  });
 
 app.get('/site', (request, response, next) => {
     response.render('main_page', {number: 4, message: "My favourite bird is a: ", bird: "Seagull"});
