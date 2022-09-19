@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/nhl_query_style.css">
+</head>
+<body>
+    
+    <div class="header-div">
+        <img class="player-image" src="/media/hockey-sketch.jpg" alt="A detailed, but rough sketch of a front-facing hockey player">
+        <h1 class="header-text">
+            Hockey Player Search
+        </h1>
+        <h3>Input a name to return player data corresponding to players from the NHLs databases</h3>
+    </div>
+    
+    <div class="form-section">
+        <form action="/misc/hockey" method="POST">
+            <!-- For these inputs to work, form action="" must contain the extension to the file that will process the information-->
+            <!-- input name="" must contain and match(?) the name of the value sent to the javascript file via the value="" parameter-->
+            <label class="input-label" for="nameKey">Input Name Keyword:</label>
+            <input class="input-box" type="text" placeholder="name" id="nameKey" name="nameKey"><br><br>
+            <input class="input-button" type="submit" value="Submit Query">
+        </form>
+    </div>
+
+    <div class="header-div">
+        <img class="player-image" src="/media/hockey-sketch.jpg" alt="A detailed, but rough sketch of a front-facing hockey player">
+        <h1 class="header-text">
+            NHL Roster Search
+        </h1>
+        <h3>Input an NHL team's ID number to return its current roster of players (Not implemented)</h3>
+    </div>
+    
+    <div class="form-section">
+        <form action="/misc/hockey" method="POST">
+            <label class="input-label" for="nameKey">Input team ID number:</label>
+            <input class="input-box" type="text" placeholder="name" id="nameKey" name="nameKey"><br><br>
+            <input class="input-button" type="submit" value="Submit Query">
+        </form>
+    </div>
+</body>
+</html>
