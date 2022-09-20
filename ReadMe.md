@@ -31,6 +31,5 @@ sent back to the user.
 
 ## TODO:
 
--Incorporate hockey_data.ejs into the display of data obtained from roster_search.html
 -Added more API functions
 -Add more functionality to existing API functions

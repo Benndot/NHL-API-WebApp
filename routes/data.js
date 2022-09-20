@@ -84,8 +84,21 @@ router.post('/roster_search', async (req, res) => {
         res.send(`The ID value of ${teamIndex} does not correspond to an existing NHL team. No data has been returned`)
     } 
     else {
-        // console.log(hockeyData.roster[0].person)
-        res.send(hockeyData)
+        let rosterEntryArray = []
+
+        let rosterDataArray = hockeyData.roster
+
+        rosterDataArray.forEach((dataObj) => {
+            let playerEntryString = `Name: ${dataObj.person.fullName}, Position: ${dataObj.position.name}, ` +
+        `Jersey Number: ${dataObj.jerseyNumber}, Database ID: ${dataObj.person.id}\n` +
+        `-----------------------------------------------------------------------------------------------------\n`
+        
+            rosterEntryArray.push(playerEntryString)
+        })
+
+        let resultsHeader = `The NHL API returned this roster data for NHL Team with ID ${teamIndex}`
+
+        res.render('hockey_data', {dataResults: rosterEntryArray, pageHeader: resultsHeader})
     }
     
 })
