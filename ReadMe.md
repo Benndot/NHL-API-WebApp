@@ -22,3 +22,9 @@ Pages can access the following pages from the main address:
 "/player_search" (POST): Takes an input of a text box and applies that string to the NHL APIs player search function. A list of players matching that key-word is then returned,
 which is picked apart and rearranged into a more nicely presented string of data for each entry entry. That list of data strings is then inserted into a dynamic webpage and is
 sent back to the user. 
+
+"/roster_search" (POST): Takes a number input from the HTML returns the current roster of players of the team corresponding to the number index given
+
+## TODO:
+
+-Adapt the hockey_data.ejs page to be more abstracted. Send the header from JS in order to use the file for many different purposes

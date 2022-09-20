@@ -9,7 +9,7 @@ const router = express.Router()
 const fetch = require('node-fetch')
 
 router.get('/', (request, response) => {
-    response.sendFile("nhl_query.html", {root: "public/static/"});
+    response.sendFile("player_name_search.html", {root: "public/static/"});
 });
 
 router.get('/roster', (request, response) => {
@@ -35,8 +35,6 @@ router.post('/player_search', async (req, res) => {
     })
 
     let hockeyDataArray = hockeyData.suggestions  // An array of the results, if any such results exist
-    // console.log(hockeyDataArray) 
-    // console.log(typeof(hockeyDataArray[0]))
 
     // Getting the first player in the list's data, or returning an undefined message to the console otherwise
     if (hockeyData.suggestions[0] == undefined) {
@@ -51,11 +49,14 @@ router.post('/player_search', async (req, res) => {
             dataTextArray.push(playerResponseEntry)
         })
 
-        console.log(dataTextArray)
+        // console.log(dataTextArray)
 
         let responseLength = hockeyDataArray.length
+        let resultsHeader = `The NHL API player search has returned ${responseLength} entries`
+
+        console.log(resultsHeader)
     
-        res.render('hockey_data', {dataResults: dataTextArray, resultsLength: responseLength})
+        res.render('hockey_data', {dataResults: dataTextArray, pageHeader: resultsHeader})
     }
 })
 
