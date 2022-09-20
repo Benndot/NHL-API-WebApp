@@ -12,3 +12,31 @@ h1 {
 h3 {
     font-size: 30px;
 }
+
+.bottom-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    color: white;
+    font-size: 25px;
+    background-color: black;
+    margin-top: 600px;
+}
+
+.github-logo {
+    width: 60px;
+}
+
+#github-button {
+    background-color: rgb(207, 181, 185);
+}
+
+#frame-link {
+    text-decoration: none;
+    color: green;
+}
+
+#about-link {
+    cursor: help;
+    text-decoration: none;
+    color: rgb(106, 106, 201);
+}
