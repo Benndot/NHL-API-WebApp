@@ -1,6 +1,6 @@
 # Benson's NHL API app
 
-Updated 19 September, 2022
+Updated 20 September, 2022
 
 ## Overview
 
@@ -19,6 +19,10 @@ Pages can access the following pages from the main address:
 
 ### /data route pages:
 
+"/" (GET): Displays the player_name_search.html file for searching up players (including retired) using an inputting key-string. May change this route address eventually.
+
+"/roster (GET): Displays the roster_search.html file, for searching up the current roster of an NHL team given that franchise's number ID
+
 "/player_search" (POST): Takes an input of a text box and applies that string to the NHL APIs player search function. A list of players matching that key-word is then returned,
 which is picked apart and rearranged into a more nicely presented string of data for each entry entry. That list of data strings is then inserted into a dynamic webpage and is
 sent back to the user. 
@@ -27,4 +31,6 @@ sent back to the user.
 
 ## TODO:
 
--Adapt the hockey_data.ejs page to be more abstracted. Send the header from JS in order to use the file for many different purposes
+-Incorporate hockey_data.ejs into the display of data obtained from roster_search.html
+-Added more API functions
+-Add more functionality to existing API functions
