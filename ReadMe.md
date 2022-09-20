@@ -15,8 +15,10 @@ Pages can access the following pages from the main address:
 
 "/check": Simple response that tells you that the app is up and running on port ___ (whichever port has been selected)
 
-### /data pages:
+"/frame": A basic page messing with html iframes
 
-"/hockey" (POST): Name will be changed soon as it's too general. Takes a player name query string and applies it to the NHL APIs player search function.
-I then take the response list and break it up into each element, and extract the player information from within. Eventually, I will figure out how to
-display all of this information in whole on a dynamic webpage sent back to the user in response. 
+### /data route pages:
+
+"/player_search" (POST): Takes an input of a text box and applies that string to the NHL APIs player search function. A list of players matching that key-word is then returned,
+which is picked apart and rearranged into a more nicely presented string of data for each entry entry. That list of data strings is then inserted into a dynamic webpage and is
+sent back to the user. 

@@ -1,4 +1,4 @@
-// Making a basic web app to practice my skills
+// The main, controlling server file for this project
 // 'npm run appTracker' to track and reload the web app as we save and make changes
 
 const { urlencoded, response } = require('express');
@@ -31,7 +31,7 @@ app.use(express.json())  // Allows for the parsing of json files from the html/e
 app.set('views', './views');  // Setting the directory where the viewing media is kept. Not actually necessary here, because 'views' is ejs' default folder location name
 app.set('view engine', 'ejs');  // Setting up the viewing engine itself (installed package ejs + ejs language support extension)
 
-let port_number = 3001;
+let port_number = 3001;  // Deciding a default port number for this application to run on
 
 app.get('/', (request, response, next) => {
     response.sendFile("index.html", {root: "public/static/"});
@@ -43,16 +43,9 @@ app.get('/check', (request, response, next) => {
 
 });
 
-app.post('/', (req, res) => {
-    let nameObject = {firstName: req.body.firstName || 'Bob', lastName: req.body.lastName || 'Smith', userBirth: req.body.userBirth || '0/0/0'};
-    console.log(`You've reached POST of input_submit.ejs. Data retrieved: (${nameObject.firstName}, ${nameObject.lastName}, ${nameObject.userBirth})`);
-    res.render("user_form", {nom: nameObject.lastName, prenom: nameObject.firstName})
-})
-
-// This is the function to render static html in Express. Adapt it and use it for one of your own pages
-// app.get('/', function(request, response){
-//     response.sendFile('absolutePathToYour/htmlPage.html');
-// });
+app.get('/frame', function(request, response){
+    response.sendFile('frame.html', {root: "public/static/"});
+});
 
 const userRouter = require('./routes/data')
 app.use('/data', userRouter)

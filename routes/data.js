@@ -12,11 +12,11 @@ router.get('/', (request, response) => {
     response.sendFile("nhl_query.html", {root: "public/static/"});
 });
 
-router.post('/', (req, res) => {
-    // For the inteactivity added to the bottom bar of the friendly.ejs page
-    console.log(`${req.body.fileSelect || 'No input'}, ${typeof(req.body.fileSelect)}.${req.body.inputDate || 'No input'}`)
-})
+router.get('/roster', (request, response) => {
+    response.sendFile("roster_search.html", {root: "public/static/"});
+});
 
+// Player search route
 router.post('/player_search', async (req, res) => {
     nameQuery = req.body.nameKey
     console.log(nameQuery)
@@ -55,14 +55,16 @@ router.post('/player_search', async (req, res) => {
 
         let responseLength = hockeyDataArray.length
     
-        console.log(playerDataString)
         res.render('hockey_data', {dataResults: dataTextArray, resultsLength: responseLength})
     }
 })
 
-router.post('/hockey_roster', async (req, res) => {
-    nameQuery = req.body.nameKey
-    let urlString = `https://statsapi.web.nhl.com/api/v1/teams/1/roster`
+// Searching for the current rosters of teams
+router.post('/roster_search', async (req, res) => {
+    
+    teamIndex = req.body.inputNum
+    
+    let urlString = `https://statsapi.web.nhl.com/api/v1/teams/${teamIndex}/roster`
     const options = {
         "method": "GET"
     }
@@ -76,8 +78,15 @@ router.post('/hockey_roster', async (req, res) => {
         })
     })
 
-    console.log(hockeyData.roster[0].person)
-    res.send(hockeyData)
+    if (hockeyData.message == "Object not found") {
+        console.log(`The ID value of ${teamIndex} does not correspond to an existing NHL team. No data has been returned`)
+        res.send(`The ID value of ${teamIndex} does not correspond to an existing NHL team. No data has been returned`)
+    } 
+    else {
+        // console.log(hockeyData.roster[0].person)
+        res.send(hockeyData)
+    }
+    
 })
 
 module.exports = router

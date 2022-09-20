@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="/styles/player_data.css">
 </head>
 <body>
-    <h1>The API returned the following data (<%= locals.resultsLength | 1 %>)</h1>
+    <h1>The NHL API has returned <%= locals.resultsLength | "Error" %> entries </h1>
     <pre class="result-text"><%= locals.dataResults %></pre>
+
+    <div class="bottom-bar">Benson's NHL API</div>
 </body>
 </html>

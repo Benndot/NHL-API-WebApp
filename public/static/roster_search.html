@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHL API Active Roster Search</title>
+    <link rel="stylesheet" href="/styles/nhl_query_style.css">
+</head>
+<body>
+    <div class="header-div">
+        <img class="player-image" src="/media/team-sketch.jpg" alt="A detailed, but rough sketch of a front-facing hockey player">
+        <h1 class="header-text">
+            NHL API Active Roster Search
+        </h1>
+        <h3>Input an NHL team's ID number to return its current roster of players (Not implemented)</h3>
+    </div>
+    
+    <div class="form-section">
+        <form action="/data/roster_search" method="POST">
+            <label class="input-label" for="inputNum">Input team ID number:</label>
+            <input class="input-num" type="number" placeholder="Number" id="inputNum" name="inputNum"><br><br>
+            <input class="input-button" type="submit" value="Submit Value">
+        </form>
+    </div>
+</body>
+</html>
