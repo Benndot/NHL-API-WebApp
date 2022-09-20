@@ -1,0 +1,21 @@
+body {
+    background-color: rgb(253, 253, 131);
+    text-align: center;
+}
+
+h1 {
+    font-size: 50px;
+    margin-top: 75px;
+    margin-bottom: 100px;
+    transition: color 1s;
+}
+
+h1:hover {
+    color: coral;
+}
+
+.result-text {
+    color:darkgreen;
+    font-size: 28px;
+    line-height: 75px;
+}

@@ -17,10 +17,10 @@ router.post('/', (req, res) => {
     console.log(`${req.body.fileSelect || 'No input'}, ${typeof(req.body.fileSelect)}.${req.body.inputDate || 'No input'}`)
 })
 
-router.post('/hockey', async (req, res) => {
+router.post('/player_search', async (req, res) => {
     nameQuery = req.body.nameKey
     console.log(nameQuery)
-    let urlString = `https://suggest.svc.nhl.com/svc/suggest/v1/minplayers/${nameQuery}/15`
+    let urlString = `https://suggest.svc.nhl.com/svc/suggest/v1/minplayers/${nameQuery}/100` // nameQuery is the API search term, 100
     const options = {
         "method": "GET"
     }
@@ -34,17 +34,30 @@ router.post('/hockey', async (req, res) => {
         })
     })
 
-    console.log(typeof(hockeyData.suggestions))
-    console.log(hockeyData.suggestions)
-    console.log(typeof(hockeyData.suggestions[0]))
-    let hockeyDataArray = hockeyData.suggestions[0].split("|")
-    PlayerDataObject1 = {
-        "firstName": hockeyDataArray[2],
-        "lastName": hockeyDataArray[1],
-        "DatabaseIDnum": hockeyDataArray[0]
+    let hockeyDataArray = hockeyData.suggestions  // An array of the results, if any such results exist
+    // console.log(hockeyDataArray) 
+    // console.log(typeof(hockeyDataArray[0]))
+
+    // Getting the first player in the list's data, or returning an undefined message to the console otherwise
+    if (hockeyData.suggestions[0] == undefined) {
+        console.log("Data is undefined")
+    } 
+    else {
+        let dataTextArray = [] // An empty string within which all the data to be sent to the response page will be added
+        hockeyDataArray.forEach((dataString) => {
+            let playerDataSplitString = dataString.split("|")
+            let playerResponseEntry = `First Name: ${playerDataSplitString[2]},\nLast Name: ${playerDataSplitString[1]},\nDatabase ID Num. ${playerDataSplitString[0]}\n
+            ---------------------------------------------------------------------------------------------------------------------------------------\n`
+            dataTextArray.push(playerResponseEntry)
+        })
+
+        console.log(dataTextArray)
+
+        let responseLength = hockeyDataArray.length
+    
+        console.log(playerDataString)
+        res.render('hockey_data', {dataResults: dataTextArray, resultsLength: responseLength})
     }
-    console.log(PlayerDataObject1)
-    // res.render('hockey_data', {dataResults: hockeyData})
 })
 
 router.post('/hockey_roster', async (req, res) => {
