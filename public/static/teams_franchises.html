@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHL API Search For Team/Franchise Data</title>
+    <link rel="stylesheet" href="/styles/teams_franchises.css">
+</head>
+<body>
+
+    <div class="form-section">
+        <form action="/data/teams" method="POST">
+            <label class="input-label" for="inputNum">Get list of teams and IDs:</label>
+            <input class="input-button" type="submit" value="Submit Value">
+        </form>
+    </div>
+
+    <div class="form-section">
+        <form action="/data/franchises" method="POST">
+            <label class="input-label" for="inputNum">Get list of franchises and IDs:</label>
+            <input class="input-button" type="submit" value="Submit Value">
+        </form>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Select Category</button>
+        <div class="dropdown-content">
+          
+            <form action="/data/teams" method="POST">
+                <button>Active Teams</button>            
+            </form>
+          
+            <form action="/data/franchises" method="POST">
+                <button>Franchises</button>            
+            </form>
+
+        </div>
+      </div>
+
+</body>
+</html>

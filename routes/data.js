@@ -16,6 +16,10 @@ router.get('/roster', (request, response) => {
     response.sendFile("roster_search.html", {root: "public/static/"});
 });
 
+router.get('/teams', (request, response) => {
+    response.sendFile("teams_franchises.html", {root: "public/static/"});
+});
+
 // Player search route
 router.post('/player_search', async (req, res) => {
     nameQuery = req.body.nameKey
@@ -58,6 +62,76 @@ router.post('/player_search', async (req, res) => {
     
         res.render('hockey_data', {dataResults: dataTextArray, pageHeader: resultsHeader})
     }
+})
+
+// Returns a list of all active, currently existant NHL teams
+router.post('/teams', async (req, res) => {
+    
+    let urlString = `https://statsapi.web.nhl.com/api/v1/teams/`
+    const options = {
+        "method": "GET"
+    }
+
+    const hockeyData = await fetch(urlString, options)
+    .then (res => res.json())
+    .catch (err => {
+        console.error({
+            "message": "Something went wrong",
+            error: err
+        })
+    })
+
+    let firstTeamResult = hockeyData.teams[0]
+
+    let teamDataResults = hockeyData.teams
+
+    // Array that will contain all the formatted strings of data to be sent back to the user
+    let teamsDataArray = []
+
+    teamDataResults.forEach((entry) => {
+        let entryDataString = `Name: ${entry.name}, City: ${entry.venue.city}, Arena: ${entry.venue.name}, `
+        + `Franchise Founding Season: ${entry.firstYearOfPlay}, Team ID: ${entry.id}, Franchise ID: ${entry.franchiseId}`
+        + `\n-------------------------------------------------------------------------------------------------------------------------------------------\n`
+        teamsDataArray.push(entryDataString)
+    })
+    
+    // Creating a list of possible data parameters to show the user what other information they could additionally get
+    let teamDataCategories = []
+    let teamDataCategoriesCounter = 0
+    for (const ele in firstTeamResult) {
+        teamDataCategories.push(ele)
+        teamDataCategoriesCounter += 1
+        if (teamDataCategoriesCounter > 5) {
+            teamDataCategories.push("\n")
+            teamDataCategoriesCounter = 0
+        }
+    }
+
+    let resultsHeader = `Full list of NHL Teams and some associated data`
+
+    let additionalInfo = `Full List of Team Data Categories\n`+teamDataCategories
+
+    res.render('hockey_data', {dataResults: teamsDataArray, pageHeader: resultsHeader, addInfo: additionalInfo})
+})
+
+// Return a list of NHL franchises and associated information
+router.post('/franchises', async (req, res) => {
+    
+    let urlString = `https://statsapi.web.nhl.com/api/v1/franchises/`
+    const options = {
+        "method": "GET"
+    }
+
+    const hockeyData = await fetch(urlString, options)
+    .then (res => res.json())
+    .catch (err => {
+        console.error({
+            "message": "Something went wrong",
+            error: err
+        })
+    })
+
+    console.log(hockeyData)
 })
 
 // Searching for the current rosters of teams
