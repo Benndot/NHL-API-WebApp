@@ -33,8 +33,6 @@ Pages can access the following pages from the main address:
 
 "/" (root address): Displays a greeting page, will contain links when the site has more content and structure
 
-"/check": Simple response that tells you that the app is up and running on port ___ (whichever port has been selected)
-
 "/frame": A basic page messing with html iframes
 
 ### /data route pages:
