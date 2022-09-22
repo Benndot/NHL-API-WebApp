@@ -5,8 +5,6 @@ const { urlencoded, response } = require('express');
 const express = require('express');
 const app = express();
 
-console.log("Primary Server Online"); // Just a greeting message, can be used for debugging
-
 // app.use(logger); // Setting the logger function defined near the bottom of this file to run up here
 
 let staticOptions = {
@@ -31,16 +29,8 @@ app.use(express.json())  // Allows for the parsing of json files from the html/e
 app.set('views', './views');  // Setting the directory where the viewing media is kept. Not actually necessary here, because 'views' is ejs' default folder location name
 app.set('view engine', 'ejs');  // Setting up the viewing engine itself (installed package ejs + ejs language support extension)
 
-let port_number = 3001;  // Deciding a default port number for this application to run on
-
 app.get('/', (request, response, next) => {
     response.sendFile("index.html", {root: "public/static/"});
-});
-
-app.get('/check', (request, response, next) => {
-    console.log('Somebody has connected to our server...');
-    response.status(500).send(`Hello there, thank you for making contact on port ${port_number}!`); // This is what is received by the person contacting the page
-
 });
 
 app.get('/frame', function(request, response){
@@ -56,4 +46,5 @@ function logger(req, res, next) {
     next();
 };
 
-app.listen(port_number);
+let portNumber = 3001;  // Deciding a default port number for this application to run on
+app.listen(portNumber, () => console.log(`Primary Server Online and listening on port ${portNumber}` ));
