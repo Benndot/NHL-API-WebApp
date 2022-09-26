@@ -48,8 +48,9 @@ router.post('/player_search', async (req, res) => {
         let dataTextArray = [] // An empty string within which all the data to be sent to the response page will be added
         hockeyDataArray.forEach((dataString) => {
             let playerDataSplitString = dataString.split("|")
-            let playerResponseEntry = `First Name: ${playerDataSplitString[2]},\nLast Name: ${playerDataSplitString[1]},\nDatabase ID Num. ${playerDataSplitString[0]}\n
-            ---------------------------------------------------------------------------------------------------------------------------------------\n`
+            let playerResponseEntry = `First Name: ${playerDataSplitString[2]},\nLast Name: ${playerDataSplitString[1]},` +
+            `\nPosition: ${playerDataSplitString[12]}\nDatabase ID Num. ${playerDataSplitString[0]}\n` +
+            `---------------------------------------------------------------------------------------------------------------------------------------\n`
             dataTextArray.push(playerResponseEntry)
         })
 
