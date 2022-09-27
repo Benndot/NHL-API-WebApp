@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Am The Table</title>
+    <link rel="stylesheet" href="/styles/table_style.css">
+</head>
+<body>
+
+    <h2 id="page-header">Data Results Table</h2>
+
+    <table id="main_table">
+        <tr>
+            <th class="table-column">First Name</th>
+            <th class="table-column">Last Name</th>
+            <th class="table-column">Position</th>
+            <th class="table-column">Database ID</th>
+        </tr>
+        <tr>
+            <td class="table-column">output 1</td>
+            <td class="table-column">output 2</td>
+            <td class="table-column">output 3</td>
+            <td class="table-column"><button class="id-button">output 4</button></td>
+        </tr>
+        <tr>
+            <td class="table-column">output 5</td>
+            <td class="table-column">output 6</td>
+            <td class="table-column">output 7</td>
+            <td class="table-column"><button class="id-button">output 8</button></td>
+        </tr>
+        <tr>
+            <td class="table-column">output 9</td>
+            <td class="table-column">output 10</td>
+            <td class="table-column">output 11</td>
+            <td class="table-column"><button class="id-button">output 12</button></td>
+        </tr>
+        <tr>
+            <td class="table-column">output 13</td>
+            <td class="table-column">output 14</td>
+            <td class="table-column">output 15</td>
+            <td class="table-column"><button class="id-button">output 16</button></td>
+        </tr>
+        <tr>
+            <td class="table-column">output 17</td>
+            <td class="table-column">output 18</td>
+            <td class="table-column"><%= locals.dataValue || "output 19" %> </td>
+            <td class="table-column"><button class="id-button">output 20</button></td>
+        </tr>
+    </table>
+
+    <script src="/scripts/table_script.js"></script>
+
+</body>
+
+</html>

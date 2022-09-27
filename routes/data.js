@@ -8,6 +8,9 @@ const express = require('express')
 const router = express.Router()
 const fetch = require('node-fetch')
 
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// GET
+
 router.get('/', (request, response) => {
     response.sendFile("player_name_search.html", {root: "public/static/"});
 });
@@ -19,6 +22,13 @@ router.get('/roster', (request, response) => {
 router.get('/teams', (request, response) => {
     response.sendFile("teams_franchises.html", {root: "public/static/"});
 });
+
+router.get('/table', (req, res) => {
+    res.render("player_search_template.ejs")
+})
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// POST 
 
 // Player search route
 router.post('/player_search', async (req, res) => {
