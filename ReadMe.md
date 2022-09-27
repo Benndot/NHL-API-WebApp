@@ -44,6 +44,8 @@ Pages can access the following pages from the main address:
 "/teams" (GET): Returns the (still under construction) teams_franchises.html file. Meant to contain a couple of static interaction buttons that allow for either a list of all
 active NHL teams, or a list of all NHL franchises that have ever existed, to be generated
 
+"/table" (GET): Returns my experimental table page, on which I'm messing around with some fronted scripting that might soon be important to this project
+
 "/player_search" (POST): Takes an input of a text box and applies that string to the NHL APIs player search function. A list of players matching that key-word is then returned,
 which is picked apart and rearranged into a more nicely presented string of data for each entry entry. That list of data strings is then inserted into a dynamic webpage and is
 sent back to the user. 

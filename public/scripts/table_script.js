@@ -15,19 +15,22 @@ const altRow2 = document.querySelector('tr:nth-child(3)')
 // console.log(altRow2)
 
 // ------------------------------------------------------------------------------------------------
-// Creating a new table, and it's constituent content
+// Creating a new table from scratch, and it's constituent content, and applying it to the page
 
 // node.insertBefore() is another method of insertion that I have not yet tried
-// extinctList.replaceChild(newSpecies2, replacedChild)
+// node.replaceChild(newEle, oldEle)
 
+// Defining the existing page body
 const pageBody = document.body
 
+// Establishing the new table that we are going to be filling, giving it an ID
 const newTable = document.createElement('table')
-// newTable.className = 'table-two'
-newTable.id = "main_table"
+newTable.id = "main_table" // Should be changed, so that two tables don't share the same ID (bad practice)
 
+// The row that will contain the headers
 const headerRow = document.createElement('tr')
 
+// The individual headers
 const headerOne = document.createElement('th')
 headerOne.textContent = 'First Name'
 
@@ -58,9 +61,27 @@ while (childCounter < 5) {
     let variableRow = document.querySelector(rowText)
     console.log(variableRow.outerText) // Just for debugging, displaying values
 
-    // Here we replace the existing row with the data we want to add / or add a whole new
+    // Here we replace the existing row with the data we want to add / or add a whole new table in the process
+    let insertionRow = document.createElement('tr')
+
+    let fNameData = document.createElement('td')
+    fNameData.textContent = 'Ben'
+
+    let lNameData = document.createElement('td')
+    lNameData.textContent = 'Kiraly'
+
+    let posData = document.createElement('td')
+    posData.textContent = 'D'
+
+    let idenData = document.createElement('td')
+    idenData.textContent = '1476521'
+
+    insertionRow.appendChild(fNameData)
+    insertionRow.appendChild(lNameData)
+    insertionRow.appendChild(posData)
+    insertionRow.appendChild(idenData)
+
+    newTable.append(insertionRow)
     
     childCounter += 1 // Keeping the while loop progressing
 }
-
-const fakeTable = document.createElement('table')
