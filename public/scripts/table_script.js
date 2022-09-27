@@ -3,6 +3,14 @@ console.log("Hello to anyone weird enough to be reading the console! This is the
 // ------------------------------------------------------------------------------------------------
 // This file's scripts are for the purpose of creating a new table from scratch, and it's constituent content, and applying it to the page
 
+const pageHead = document.head
+
+const styleLink = document.createElement('link')
+styleLink.rel = "stylesheet"
+styleLink.href = "/styles/table_style.css"
+
+pageHead.appendChild(styleLink)
+
 // Defining the existing page body
 const pageBody = document.body
 
@@ -66,8 +74,12 @@ hockeyData.forEach((x) => {
     posData.className = "table-column"
 
     let idenData = document.createElement('td')
-    idenData.textContent = x.idNum
     idenData.className = "table-column"
+    let idenButton = document.createElement('button')
+    idenButton.className = 'id-button'
+    idenButton.textContent = x.idNum
+
+    idenData.appendChild(idenButton)
 
     insertionRow.appendChild(fNameData)
     insertionRow.appendChild(lNameData)
@@ -76,44 +88,3 @@ hockeyData.forEach((x) => {
 
     newTable.append(insertionRow)
 })
-
-// ------------------------------------------------------------------------------------------------
-
-// Using a while loop to apply some pre-set data (outdated example, but has some interesting ideas to keep in mind)
-let childCounter = 2 // starting value for the data rows we want to change 
-
-while (childCounter < 7) {
-    
-    // Establishing the row to be selected from  
-    let rowText = `tr:nth-child(${childCounter})`
-    let variableRow = document.querySelector(rowText)
-    console.log(variableRow.outerText) // Just for debugging, displaying values
-
-    // Here we replace the existing row with the data we want to add / or add a whole new table in the process
-    let insertionRow = document.createElement('tr')
-
-    let fNameData = document.createElement('td')
-    fNameData.textContent = 'Ben'
-    fNameData.className = "table-column"
-
-    let lNameData = document.createElement('td')
-    lNameData.textContent = 'Kiraly'
-    lNameData.className = "table-column"
-
-    let posData = document.createElement('td')
-    posData.textContent = 'D'
-    posData.className = "table-column"
-
-    let idenData = document.createElement('td')
-    idenData.textContent = '1476521'
-    idenData.className = "table-column"
-
-    insertionRow.appendChild(fNameData)
-    insertionRow.appendChild(lNameData)
-    insertionRow.appendChild(posData)
-    insertionRow.appendChild(idenData)
-
-    newTable.append(insertionRow)
-    
-    childCounter += 1 // Keeping the while loop progressing
-}

@@ -6,6 +6,11 @@ body {
 #page-header {
     font-size: 90px;
     text-align: center;
+    transition: color 1.5s;
+}
+
+#page-header:hover {
+    color: white;
 }
 
 #main_table {
